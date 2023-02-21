@@ -6,7 +6,7 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Form Validation!</title>
+        <title>Create a record</title>
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -28,23 +28,23 @@
 
         <div class="container"></div>
             <h2>Create record</h2>
-            <form>
+            <form action="create_record.php" method="post">
                 <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <label for="inputid">ID</label>
+                    <input type="text" name="id" class="form-control" value=" <?php if (isset($_POST['id'])) echo $_POST['id']; ?> ">
                 </div>
                 <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <label for="inputfirst_name">First Name</label>
+                    <input type="text" name="first_name" class="form-control" value=" <?php if (isset($_POST['first_name'])) echo $_POST['first_name']; ?> ">
                 </div>
-                <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                <div class="form-group">
+                    <label for="inputlast_name">Last Name</label>
+                    <input type="text" name="last_name" class="form-control" value=" <?php if (isset($_POST['last_name'])) echo $_POST['last_name']; ?>">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                    <input type="submit" class="btn btn-secondary btn-lg btn-block" value="Add Record">
             </form>
-
+        </div>
+        
         <!-- Optional JavaScript; choose one of the two! -->
         <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
