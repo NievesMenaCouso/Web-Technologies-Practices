@@ -14,7 +14,8 @@
         <title>Form Validation!</title>
         <style>
           .container{
-            margin-top: 40px
+            margin-top: 40px;
+            margin-bottom: 40px;
           }
           h2 {
                 border-left: solid 10px gray;
@@ -28,59 +29,63 @@
     <body>
         <?php
             if ( $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
-            # Connect to the database.
-                require ('connect_db.php');
-            # Initialize an error array.
-                $errors = array();
-            # Check for a ID.
-                if ( empty( $_POST[ 'id' ] ) ) { 
-                $errors[] = 'Enter ID Number' ; 
+                # Connect to the database.
+                  require ('connect_db.php'); 
+  
+                # Initialize an error array.
+                  $errors = array();
+
+                # Check for a ID.
+                if ( empty( $_POST[ 'id' ] ) ){ 
+                    $errors[] = 'Enter ID Number' ;
+                } else { 
+                    $id = mysqli_real_escape_string( $link, trim( $_POST[ 'id' ] ) ) ; 
                 }
-                else { 
-                $id = mysqli_real_escape_string( $link, trim( $_POST[ 'id' ] ) ) ; 
-                }
-            # Check for a first name.
+
+                # Check for a first name.
                 if ( empty( $_POST[ 'first_name' ] ) ) { 
-                $errors[] = 'Enter ID Number' ; 
+                    $errors[] = 'Enter your first name.' ; 
+                } else { 
+                    $fn = mysqli_real_escape_string( $link, trim( $_POST[ 'first_name' ] ) ) ; 
                 }
-                else { 
-                $fn = mysqli_real_escape_string( $link, trim( $_POST[ 'first_name' ] ) ) ; 
+
+                # Check for a last name.
+                if (empty( $_POST[ 'last_name' ] ) ) { 
+                    $errors[] = 'Enter your last name.' ; 
+                } else { 
+                    $ln = mysqli_real_escape_string( $link, trim( $_POST[ 'last_name' ] ) ) ; 
                 }
-            # Check for a last name.
-                if ( empty( $_POST[ 'last_name' ] ) ) { 
-                $errors[] = 'Enter ID Number' ; 
-                }
-                else { 
-                $ln = mysqli_real_escape_string( $link, trim( $_POST[ 'last_name' ] ) ) ; 
-                }
-            # Check if email address already registered.
+
+                # Check if id registered.
                 if ( empty( $errors ) ) {
-                $q = "SELECT id FROM my_table WHERE id='$id'" ;
-                $r = @mysqli_query ( $link, $q ) ;
-                if ( mysqli_num_rows( $r ) != 0 ) $errors[ ] = 'User already registered.' ;
+                    $q = "SELECT id FROM my_table WHERE id='$id'" ;
+                    $r = @mysqli_query ( $link, $q ) ;
+                    if ( mysqli_num_rows( $r ) != 0 ) $errors[] = 'User ID already registered.' ;
                 }
-            # On success insert data into 'my_table' database table.
+                    
+                # On success data into my_table on database.
                 if ( empty( $errors ) ) {
-                $q = "INSERT INTO my_table (id, first_name, last_name, ) 
-                    VALUES ('$id','$fn', '$ln')";
-                $r = @mysqli_query ( $link, $q ) ;
-                if ($r) { 
-                    echo '<p>Record added successfully</p> '; 
-                }
-                # Close database connection.
-                mysqli_close($link); 
-                exit();
+                    $q = "INSERT INTO my_table (id, first_name, last_name) 
+                    VALUES ('$id','$fn', '$ln' )";
+                    $r = @mysqli_query ( $link, $q ) ;
+                    if ($r)
+                    { echo '<p>You have added data successfully</p>
+                        <a href="create_record.php">Add Records</a>  |  <a href="read_table.php">Read Records</a>  |  <a href="update_record.php">Update Record</a>  | <a href="delete_record.php">Delete Record</a>'; }
+                
+                    # Close database connection.
+                    mysqli_close($link); 
+                    exit();
                 } else { # Or report errors.
-                echo '<p>The following error(s) occurred:</p>' ;
-                foreach ( $errors as $msg )
-                { echo " - $msg<br>" ; }
-                echo '<p>or please try again.</p></div>';
-                # Close database connection.
-                mysqli_close( $link );
+                    echo '<p>The following error(s) occurred:</p>' ;
+                    foreach ( $errors as $msg ) { 
+                      echo "$msg<br>" ; 
+                    }
+                    echo '<p>Please try again.</p></div>';
+                    # Close database connection.
+                    mysqli_close( $link );
                 }  
             }
         ?>
-
         <div class="container">
             <h2>Create record</h2>
             <form action="create_record.php" method="post">
@@ -106,12 +111,20 @@
                 </div>    
                 <input type="submit" class="btn btn-secondary btn-lg btn-block" value="Add Record">
             </form>
+            <a href="create_record.php">Add Records</a>  |  <a href="read_table.php">Read Records</a>  |  <a href="update_record.php">Update Record</a>  | <a href="delete_record.php">Delete Record</a>
         </div>
-        
-        <!-- Optional JavaScript; choose one of the two! -->
-        <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    -->
     </body>
+
 </html>
