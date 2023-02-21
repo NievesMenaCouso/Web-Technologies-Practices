@@ -95,7 +95,7 @@
         }
         //3
         function dayGreet(){
-            $timezone = date("e");
+            $time = date("e");
             // If the time is less than 1200 hours, show good morning //
             if ($time < "12") {
                 echo "Good morning ";
