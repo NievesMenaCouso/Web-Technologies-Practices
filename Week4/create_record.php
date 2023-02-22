@@ -11,9 +11,8 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-        <title>Form Validation!</title>
         <style>
-          .container{
+          .container {
             margin-top: 40px;
             margin-bottom: 40px;
           }
@@ -111,7 +110,9 @@
                 </div>    
                 <input type="submit" class="btn btn-secondary btn-lg btn-block" value="Add Record">
             </form>
-            <a href="create_record.php">Add Records</a>  |  <a href="read_table.php">Read Records</a>  |  <a href="update_record.php">Update Record</a>  | <a href="delete_record.php">Delete Record</a>
+            <a href="create_record.php">Add Records</a>  |  
+            <a href="read_table.php">Read Records</a>  |  
+            <a href="update_record.php">Update Record</a>  | <a href="delete_record.php">Delete Record</a>
         </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
