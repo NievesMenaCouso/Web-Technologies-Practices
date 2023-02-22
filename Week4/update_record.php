@@ -12,20 +12,27 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
         <style>
-          .container {
-            margin-top: 40px;
-            margin-bottom: 40px;
-          }
-          h2 {
+            .container {
+                margin-top: 40px;
+                margin-bottom: 40px;
+            }
+            
+            h2 {
                 border-left: solid 10px gray;
                 padding: 10px;
                 margin-bottom: 50px;
+            }
+
+            form {
+                margin-bottom: 40px; 
             }
         </style>
 
     </head>
 
     <body>
+
+    <!-- PHP starts-->
         <?php
             if ( $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
                 # Connect to the database.
@@ -83,7 +90,30 @@
                 }
             }
         ?>
+    <!-- PHP ends-->
 
+    <!-- Navbar starts -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+            <div class="navbar navbar-light bg-secondary" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="create_record.php">Create record</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="read_table.php">Read table</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="update_record.php">Update record<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="delete_record.php">Delete record</a>
+                    </li>
+                </ul>
+            </div>
+        </nav> 
+    <!-- Navbar ends -->
+
+    <!-- Form starts -->
         <div class="container">
             <h2>Update record</h2>
             <form action="update_record.php" method="post">
@@ -109,10 +139,8 @@
                 </div>    
                 <input type="submit" class="btn btn-secondary btn-lg btn-block" value="Update Record">
             </form>
-            <a href="create_record.php">Add Records</a>  |  
-            <a href="read_table.php">Read Records</a>  |  
-            <a href="update_record.php">Update Record</a>  | <a href="delete_record.php">Delete Record</a>
         </div>
+    <!-- Form ends -->
 
     <!-- Optional JavaScript; choose one of the two! -->
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
@@ -125,6 +153,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
     -->
+
     </body>
 
 </html>

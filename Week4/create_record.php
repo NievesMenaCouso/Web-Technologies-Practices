@@ -6,26 +6,33 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Create a record</title>
+        <title>Create record</title>
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
         <style>
-          .container {
-            margin-top: 40px;
-            margin-bottom: 40px;
-          }
-          h2 {
+            .container {
+                margin-top: 40px;
+                margin-bottom: 40px;
+            }
+
+            h2 {
                 border-left: solid 10px gray;
                 padding: 10px;
                 margin-bottom: 50px;
+            }
+            
+            form {
+                margin-bottom: 40px; 
             }
         </style>
 
     </head>
 
     <body>
+
+    <!-- PHP starts -->  
         <?php
             if ( $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
                 # Connect to the database.
@@ -85,6 +92,30 @@
                 }  
             }
         ?>
+    <!-- PHP ends -->
+
+    <!-- Navbar starts -->
+        <nav class="navbar navbar-expand-lg navbar-secondary bg-secondary">
+            <div class="navbar navbar-light bg-secondary" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="create_record.php">Create record<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="read_table.php">Read table</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="update_record.php">Update record</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="delete_record.php">Delete record</a>
+                    </li>
+                </ul>
+            </div>
+        </nav> 
+    <!-- Navbar ends -->
+
+    <!-- Form starts -->
         <div class="container">
             <h2>Create record</h2>
             <form action="create_record.php" method="post">
@@ -109,11 +140,9 @@
                     </div>    
                 </div>    
                 <input type="submit" class="btn btn-secondary btn-lg btn-block" value="Add Record">
-            </form>
-            <a href="create_record.php">Add Records</a>  |  
-            <a href="read_table.php">Read Records</a>  |  
-            <a href="update_record.php">Update Record</a>  | <a href="delete_record.php">Delete Record</a>
+            </form> 
         </div>
+    <!-- Form ends -->
 
     <!-- Optional JavaScript; choose one of the two! -->
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
