@@ -2,6 +2,7 @@
 and loading a new page if successful--> 
 
     <?php 
+
         // Load the page login.php
         function load($page = 'login.php'){
 
@@ -53,6 +54,7 @@ and loading a new page if successful-->
 
             // If there were no errors 
             if (empty($errors)){
+                
                 // return assiciated user_id, first_name and last_name to the caller
                 $q = "SELECT user_id, first_name, last_name FROM users WHERE email='$e' AND pass='$p'";
                 $r = mysqli_query ($link, $q);
@@ -62,6 +64,7 @@ and loading a new page if successful-->
 
                 // If email and password NOT found in 'users'
                 } else {
+
                     // Display error message
                     $errors[] = 'Email address and password not found.';
                 }
@@ -70,4 +73,5 @@ and loading a new page if successful-->
             // Statement to return list of errors
             return array(false, $errors);
         }
+
     //IT IS IMPORTANT NOT TO CLOSE THIS PHP SCRIPT

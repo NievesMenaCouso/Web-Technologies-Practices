@@ -1,6 +1,7 @@
 <!-- After login succeeds you create the home page to be loaded
 with session data on all pages that the user can navigate -->
     <?php 
+
         // Include the navigation for the page
         include('includes/nav.php');
 
@@ -34,4 +35,5 @@ with session data on all pages that the user can navigate -->
         
         // Include the footer
         include('includes/footer.html');
+        
     ?>

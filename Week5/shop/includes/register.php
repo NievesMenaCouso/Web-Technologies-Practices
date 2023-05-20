@@ -1,4 +1,5 @@
 <!-- PHP script for registration starts--> 
+
     <?php
 
         // Include the navigation for the page
@@ -105,6 +106,7 @@
 
         include('includes/footer.html'); 
         }
+        
     ?>
 <!-- PHP script for registration ends--> 
 

@@ -1,18 +1,23 @@
-<!-- Page to log in or access other pages of the website --> 
+<!-- File to log in or access other pages of the website --> 
     <!-- PHP script if login fails starts --> 
         <?php
+
             // Include the navigation for the page
             include('includes/nav.html');
+
             // If there are errors
             if (isset($errors) && !empty($errors)){
+
                 // display the error message
                 echo '<p id="err_msg">Oops! There was a problem:<br>';
                 foreach($errors as $msg){
                     echo " - $msg<br>";
                 }
+
                 // and ask to try again with a link back to teh register page
                 echo 'Please try again or <a href="register.php">Register</a></p>';
             }
+
         ?>
     <!-- PHP script if log in fails endss --> 
 

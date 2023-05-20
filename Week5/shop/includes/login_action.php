@@ -2,9 +2,10 @@
 allowing the user to be recognised as the y navigate from page to page -->
 
 <?php
+
     // If the login form has been submitted
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
+        
         // Open database connection
         require('connect_db.php');
 
@@ -33,4 +34,5 @@ allowing the user to be recognised as the y navigate from page to page -->
 
     // Add the script from login.php
     include('login.php');
+
 ?>
