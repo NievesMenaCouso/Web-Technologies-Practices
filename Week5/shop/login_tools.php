@@ -11,9 +11,11 @@ and loading a new page if successful-->
 
             // Remove any trailing slashes from the URL
             $url = rtrim($url, '/\\');
+
+            // Append page name to URL
             $url .= '/'.$page;
 
-            // Insert the statement load 
+            // Insert the statement load, redirecting
             header("Location: $url");
 
             // Quit

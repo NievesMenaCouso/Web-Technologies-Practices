@@ -1,5 +1,6 @@
-<!-- File to set information retrieved from database if login succeeds
-allowing the user to be recognised as the y navigate from page to page -->
+<!-- File to process login attempt, 
+setting information retrieved from database if login succeeds
+and allowing the user to be recognised as they navigate from page to page -->
 
 <?php
 
@@ -9,13 +10,13 @@ allowing the user to be recognised as the y navigate from page to page -->
         // Open database connection
         require('connect_db.php');
 
-        // Make login tools available
+        // Make login tools available (get connection, load and validate functions)
         require('login_tools.php');
 
         // Ensure login succeeded and retrieve the associated user details
         list($check, $data) = validate($link, $_POST['email'], $_POST['pass']);
 
-        // Set the user details as session data and load the home page
+        // On success, set the user details as session data and load the home page
         if ($check){
             session_start();
             $_SESSION['user_id'] = $data['user_id'];
@@ -32,7 +33,7 @@ allowing the user to be recognised as the y navigate from page to page -->
         mysqli_close($link);
     }
 
-    // Add the script from login.php
+    // Continue to display login page on failure
     include('login.php');
 
 ?>

@@ -1,28 +1,31 @@
-<!-- File to view and edit the quantities in the cart array --> 
+<!-- File display and edit the CART PAGE --> 
 
     <?php 
 
-        // Include the file that will begin the session
+        // Set the title
+        $page_title = 'Cart';
+
+        // Display the header section
         include('includes/nav.php');
 
-        // Check if anything has been stored in teh session cart
+        // Check if the form has been submited for update
         if ($_SERVER['REQUEAST_METHOD'] == 'POST'){
             
-            // Loop the block for each element in the array
+            // Loop to update changed quantity field values
             foreach ($_POST['qty'] as $item_id => $item_qty){
 
                 // Ensure values are integers
                 $id = (int) $item_id;
                 $qty = (int) $item_qty;
 
-                // If the quantity in the cart if 0
+                // If the quantity in the cart is 0
                 if ($qty == 0){
 
                     // delete the cart
                     unset($_SESSION['cart'][$id]);
 
                 // If the quantity in the cart is > 0
-                } elseif ($qty >0){
+                } elseif ($qty > 0){
 
                     // change the quantity of the item in the cart
                     $_SESSION['cart'][$id]['quantity'] = $qty;
@@ -40,7 +43,7 @@
             require('connect_db.php');
             
             // Intialise a variable to hold the SQL statement 
-            // to find the item in the database based on the item stored from the session
+            // to retrieve items in the database based on the item id stored from the session
             $q = "SELECT * FROM products WHERE item_id IN ("; 
             foreach($_SESSION['cart'] as $id => $value){
                 $q .= $id .',';
@@ -83,7 +86,7 @@
                             >
                         </td>
                         <td>@{$row['item_price']} = </td>
-                        <td>&pound ".number_format ($subtotal, 2)."</td>
+                        <td>&pound ".number_format($subtotal, 2)."</td>
                     </tr>";
             }
 
@@ -91,30 +94,48 @@
             mysqli_close($link);
 
             // FORM 3/3 Display the total by connecting to checkout.php page 
-            //and appending the total due in the URL
+            // and appending the total due in the URL
             echo '
                         <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td>Total=&pound '.number_format($total,2).'</td>
                         </tr>
                         <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td>
                                 <input
                                     type="submit"
                                     name="submit"
+                                    class="btn btn-light btn-lg btn-block"
                                     value="Update My Cart"
                                 >
                             </td>
                         </tr>
                         <td>
-                            <a herf="checkout.php?total='.$total.'">Checkout Now</a>
+                            <a 
+                                herf="checkout.php?total='.$total.'" 
+                                class="btn btn-light btn-lg btn-block"
+                            >Checkout Now</a>
                         </td>
                     </table>
                 </form>';
         
         // If cart is empty
         } else {
+
             // display a message saying so
-            echo '<p>Your cart is currently empty.</p>';
+            echo '
+                    <div class="alert alert-secondary" role="alert>
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <p>Your cart is currently empty.</p>
+                    </div>
+                </div>';
         }
 
     ?>
