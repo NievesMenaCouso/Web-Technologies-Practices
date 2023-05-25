@@ -3,7 +3,7 @@
     <?php 
 
         # Connect  on 'localhost' 'practice' .
-        $link = mysqli_connect('localhost','root','usbw','practice'); 
+        $link = mysqli_connect('localhost','root','lunatica2','tw'); 
         
         # Otherwise fail gracefully and explain the error.
         if (!$link) { 
