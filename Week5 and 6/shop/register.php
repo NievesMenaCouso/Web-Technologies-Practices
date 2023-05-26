@@ -150,6 +150,7 @@
                                     <input 
                                         type="text" 
                                         name="first_name" 
+                                        class="form-control"
                                         placeholder="*First Name" 
                                         required
                                         value="<?php if (isset($_POST['first_name'])) echo $_POST['first_name']; ?>"
@@ -166,6 +167,7 @@
                                     <input 
                                         type="text" 
                                         name="last_name" 
+                                        class="form-control"
                                         placeholder="*Last Name" 
                                         required
                                         value="<?php if (isset($_POST['last_name'])) echo $_POST['last_name']; ?>"
@@ -182,6 +184,7 @@
                                     <input 
                                         type="email" 
                                         name="email" 
+                                        class="form-control"
                                         placeholder="*Email"
                                         required
                                         value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>"
@@ -198,6 +201,7 @@
                                     <input 
                                         type="password" 
                                         name="pass1" 
+                                        class="form-control"
                                         placeholder="*Create Password" 
                                         required
                                         value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1']; ?>"
@@ -214,8 +218,8 @@
                                     <input 
                                         type="password" 
                                         name="pass2" 
-                                        class="form-control" 
-                                        placeholder="Confirm Password" 
+                                        class="form-control"
+                                        placeholder="*Confirm Password" 
                                         required
                                         value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2']; ?>"
                                     >
@@ -227,7 +231,7 @@
                             type="submit" 
                             class="btn btn-dark btn-large btn-block"
                             value="Register"
-                        > <!-- </p>-->
+                        >
                     </form>
                 </div> <!-- Closing "card-body" -->
             </div> <!-- Closing class="card bg-light mb-3" -->
